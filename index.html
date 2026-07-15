@@ -150,7 +150,7 @@
     overflow:hidden;
     min-height:88vh;
   }
-  .hero img{
+  .hero img, .hero-video{
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
   }
   .hero::after{
@@ -238,6 +238,7 @@
   }
   .sobre-grid h2{font-size:clamp(28px,3.4vw,38px); margin-bottom:22px;}
   .sobre-grid p{margin-bottom:18px; max-width:52ch; color:rgba(14,14,14,0.82);}
+  .sobre-grid p.eyebrow, .sobre-grid .eyebrow{color:var(--bronze) !important;}
   .sobre-media{margin:30px 0; max-width:440px;}
   .sobre-media img{
     width:100%; aspect-ratio:4/3; object-fit:cover; display:block;
@@ -473,7 +474,9 @@
 
   <!-- HERO -->
   <section class="hero" id="topo">
-    <img src="images/hero-paper-pen.jpg" alt="Papel e caneta sobre a mesa de trabalho, em tom editorial" loading="eager">
+    <video autoplay muted loop playsinline webkit-playsinline poster="images/hero-paper-pen.jpg" class="hero-video" preload="auto">
+      <source src="images/hero-video.mp4" type="video/mp4">
+    </video>
     <div class="hero-content">
       <div class="hero-inner">
         <h1 class="reveal">Um estúdio criativo que transforma marcas em agentes culturais.</h1>
@@ -603,11 +606,17 @@
         </div>
 
         <div class="service-card">
-          <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.1">
-            <rect x="6" y="6" width="28" height="28" rx="2"/>
-            <path d="M20 14 C 17 14, 15 16, 15 19 C 15 23, 20 28, 20 28 C 20 28, 25 23, 25 19 C 25 16, 23 14, 20 14 Z"/>
-            <circle cx="20" cy="19" r="2" fill="currentColor" stroke="none"/>
-            <path d="M10 16 L14 12 M30 24 L26 28"/>
+          <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- mapa dobrado -->
+            <polygon points="6,10 6,32 15,29 25,32 34,29 34,7 25,10 15,7"/>
+            <line x1="15" y1="7" x2="15" y2="29"/>
+            <line x1="25" y1="10" x2="25" y2="32"/>
+            <!-- linhas de rota no mapa -->
+            <path d="M9 18 L13 18 M9 22 L12 22"/>
+            <!-- pin de localização -->
+            <circle cx="20" cy="16" r="4"/>
+            <circle cx="20" cy="16" r="1.4" fill="currentColor" stroke="none"/>
+            <path d="M20 20 L20 25"/>
           </svg>
           <h3>Estratégia &amp; Brand Experience</h3>
           <p>Estruturação completa da experiência de marca em todos os touchpoints (digital e físico). Identificamos oportunidades, definimos estratégia e orientamos execução, mesmo quando outros especialistas implementam.</p>
@@ -735,8 +744,10 @@
             </svg>
           </a>
           <a href="https://instagram.com/brandhaus.cs" target="_blank" rel="noopener" title="Instagram" aria-label="Seguir no Instagram">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.646.069 4.85 0 3.204-.012 3.584-.07 4.85-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.251-.149-4.766-1.693-4.916-4.921-.057-1.266-.069-1.646-.069-4.85 0-3.204.012-3.584.07-4.85.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.646-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.015-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.322a1.44 1.44 0 110-2.88 1.44 1.44 0 010 2.88z"/>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4.5"/>
+              <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
             </svg>
           </a>
           <a href="https://wa.me/5511965965244" target="_blank" rel="noopener" title="WhatsApp" aria-label="Enviar mensagem no WhatsApp">
@@ -746,12 +757,13 @@
           </a>
           <a href="https://www.behance.net/rafaelfujita1" target="_blank" rel="noopener" title="Behance" aria-label="Ver portfolio no Behance">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-              <path d="M22 7.469h-6.482V6h6.482v1.469zm1.469 6.484c.04.66.011 1.319-.089 1.969h-8.588c.116 2.104 1.363 2.907 2.845 2.907 1.024 0 1.888-.484 2.183-1.279h3.363c-.573 2.235-2.607 3.664-5.505 3.664-3.735 0-6.213-2.375-6.213-6.463 0-3.919 2.528-6.494 6.213-6.494 3.899 0 6.135 2.75 5.791 5.696zm-3.335-1.729c-.062-1.454-1.104-2.235-2.478-2.235-1.312 0-2.311.75-2.541 2.235h5.019zM8.868 3H0v18h9.204c3.045 0 6.088-1.469 6.088-5.234 0-2.375-1.201-3.845-2.86-4.485 1.201-.603 1.918-1.706 1.918-3.301C14.35 4.639 12.256 3 8.868 3zM3.938 6.719h4.325c1.402 0 2.199.647 2.199 1.784 0 1.191-.797 1.816-2.199 1.816H3.938V6.719zm4.727 10.559H3.938v-4.126h4.727c1.658 0 2.478.859 2.478 2.036 0 1.244-.82 2.09-2.478 2.09z"/>
+              <path d="M9.5 6H2v12h7.5c2.5 0 4.5-1.1 4.5-3.5 0-1.4-.7-2.4-1.8-2.9C13.2 11.1 14 10 14 8.5 14 6.9 12.5 6 9.5 6zM4.5 8h4.8c.9 0 1.7.3 1.7 1.3S10.2 10.6 9.3 10.6H4.5V8zm0 7.9v-3.4H9.8c1.1 0 2 .5 2 1.7s-.9 1.7-2 1.7H4.5zM15.5 8h7v1.4h-7V8zm6.7 5.6H16c.1 1.5 1 2.1 2.1 2.1.7 0 1.4-.4 1.6-.9h2.5c-.4 1.6-1.9 2.7-4.1 2.7-2.8 0-4.6-1.7-4.6-4.8 0-2.9 1.9-4.8 4.6-4.8 2.9 0 4.6 2 4.3 4.2zM20.5 12c0-1.1-.8-1.7-1.8-1.7s-1.7.6-1.9 1.7h3.7z"/>
             </svg>
           </a>
           <a href="https://www.linkedin.com/company/brandhaus-cs" target="_blank" rel="noopener" title="LinkedIn" aria-label="Conectar no LinkedIn">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.13.597-.13.945v5.442h-3.554s.05-8.736 0-9.643h3.554v1.364c.42-.65 1.175-1.577 2.871-1.577 2.094 0 3.666 1.368 3.666 4.31v5.546zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.708 0-.951.77-1.708 1.963-1.708 1.19 0 1.912.757 1.935 1.708 0 .95-.745 1.708-1.983 1.708zm1.946 11.019H3.39V9.809h3.893v10.643zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+              <rect x="1" y="1" width="22" height="22" rx="4" ry="4"/>
+              <path d="M6 9.5h2.8v9.5H6V9.5zM7.4 8.4c-.9 0-1.4-.6-1.4-1.4 0-.8.6-1.4 1.5-1.4.9 0 1.4.6 1.4 1.4 0 .8-.6 1.4-1.5 1.4zM18 19h-2.8v-5c0-1.2-.4-2-1.5-2-.8 0-1.3.6-1.5 1.1-.1.2-.1.5-.1.7V19h-2.8V9.5h2.8v1.3c.4-.6 1.1-1.5 2.7-1.5C16.7 9.3 18 10.4 18 13.3V19z" fill="white"/>
             </svg>
           </a>
         </div>
@@ -777,6 +789,40 @@
 <script>
   var copyYearEl = document.getElementById('copyYear');
   if (copyYearEl) { copyYearEl.textContent = new Date().getFullYear(); }
+
+  // Autoplay do hero video — compatível com Safari/iOS
+  var heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.volume = 0;
+    heroVideo.setAttribute('muted', '');
+    heroVideo.setAttribute('playsinline', '');
+    heroVideo.setAttribute('webkit-playsinline', '');
+
+    function tryPlay() {
+      var p = heroVideo.play();
+      if (p && p.catch) {
+        p.catch(function(e) { console.log('autoplay blocked:', e); });
+      }
+    }
+
+    // Tenta imediatamente
+    tryPlay();
+
+    // Tenta de novo após 100ms (Safari às vezes precisa de um tick extra)
+    setTimeout(tryPlay, 100);
+
+    // Tenta de novo quando a página termina de carregar
+    window.addEventListener('load', tryPlay);
+
+    // Fallback: primeira interação do usuário
+    ['touchstart','touchend','click','scroll'].forEach(function(evt) {
+      document.addEventListener(evt, function handler() {
+        tryPlay();
+        document.removeEventListener(evt, handler);
+      }, { once: true, passive: true });
+    });
+  }
 
   var track = document.getElementById('portfolioTrack');
   var prevBtn = document.getElementById('carouselPrev');
